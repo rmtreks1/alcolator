@@ -103,6 +103,13 @@
     
     // set the text for Beer Percentage Label
     self.staticBeerPercentageLabel.text = @"alcohol percentage per beer";
+    
+    // setting default font
+    self.staticBeerPercentageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    self.beerPercentTextField.font = [UIFont fontWithName:@"HelveticaNeue-UltraThin" size:16.0f];
+    self.beerCountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
+    self.resultLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
+    self.resultLabel.textAlignment = NSTextAlignmentCenter;
 
     
 }
