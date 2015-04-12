@@ -75,7 +75,7 @@
     self.beerPercentTextField.delegate = self;
     
     // Set the placeholder text
-    self.beerPercentTextField.placeholder = NSLocalizedString(@"% Alcohol Content Per Beer", @"Beer percent placeholder text");
+    self.beerPercentTextField.placeholder = NSLocalizedString(@"Alcohol % Per Beer", @"Beer percent placeholder text");
     
     // Tells `self.beerCountSlider` that when its value changes, it should call `[self -sliderValueDidChange:]`.
     // This is equivalent to connecting the IBAction in our previous checkpoint
@@ -102,7 +102,7 @@
     self.beerPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
     
     // set the text for Beer Percentage Label
-    self.staticBeerPercentageLabel.text = @"alcohol percentage per beer";
+    self.staticBeerPercentageLabel.text = @"alcohol % per beer";
     
     // setting default font
     self.staticBeerPercentageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
@@ -111,8 +111,9 @@
     self.resultLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f];
     self.resultLabel.textAlignment = NSTextAlignmentCenter;
     
-    // hide the calculate button by default
-     self.calculateButton.hidden = true;
+    // hide the calculate button & the label by default
+    self.calculateButton.hidden = true;
+    self.staticBeerPercentageLabel.hidden = true;
 
     
 }
@@ -321,9 +322,11 @@
     self.beerPercentTextField.textColor = [UIColor blackColor];
     NSLog(@"%lu",(unsigned long)self.beerPercentTextField.text.length); // error!!! beerPercentTextField is storing text not float
     if (self.beerPercentTextField.text.length != 0) {
-       self.calculateButton.hidden = false; // hide the calculate button during edit
+        self.calculateButton.hidden = false; // hide the calculate button during edit
+        self.staticBeerPercentageLabel.hidden = false;
     } else {
         self.calculateButton.hidden = true;
+        self.staticBeerPercentageLabel.hidden = true;
     }
     
 }
