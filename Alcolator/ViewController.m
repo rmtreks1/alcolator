@@ -293,14 +293,15 @@
 
 
 -(void)textFieldDidBeginEditing:(UITextField *)beerPercentTextField{
-    // Set the primary color of our input field to white
+    // Set the text color on input to Blue
     self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
     self.beerPercentTextField.textColor = [UIColor blueColor];
+    self.beerPercentTextField.keyboardAppearance = UIKeyboardAppearanceDark;
 }
 
 
 -(void)textFieldDidEndEditing:(UITextField *)beerPercentTextField{
-    // change the color of the beerPercentTextField and take the emphasis away from this input field
+    // change the color of the beerPercentTextField back to black to take emphasis away
     self.beerPercentTextField.backgroundColor = self.view.backgroundColor;
     self.beerPercentTextField.textColor = [UIColor blackColor];
 }
