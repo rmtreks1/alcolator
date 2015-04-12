@@ -12,6 +12,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *beerPercentTextField;
 @property (weak, nonatomic) IBOutlet UISlider *beerCountSlider;
 @property (weak, nonatomic) IBOutlet UILabel *resultLabel;
+@property (weak, nonatomic) IBOutlet UILabel *beerCountLabel;
 
 @end
 
@@ -41,11 +42,7 @@
 - (IBAction)sliderValueDidChange:(UISlider *)sender {
     NSLog(@"Slider value changed to %f", sender.value);
     [self.beerPercentTextField resignFirstResponder]; // what does resignFirstResponder do?
-}
-
-
-- (IBAction)buttonPressed:(UIButton *)sender {
-    [self.beerPercentTextField resignFirstResponder]; // when do I use . and when do I use []
+    
     
     // calculating alcohol in the beers
     int numberOfBeers = self.beerCountSlider.value;
@@ -84,8 +81,65 @@
     
     // generate the text and display it on the label
     NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
-    self.resultLabel = resultText;
+    self.resultLabel.text = resultText;
     
+    // generate text & display number of beers
+    NSString *beerCountText = [NSString stringWithFormat:NSLocalizedString(@"%d %@", nil), numberOfBeers, beerText];
+    self.beerCountLabel.text = beerCountText;
+
+    
+}
+
+
+- (IBAction)buttonPressed:(UIButton *)sender {
+    [self.beerPercentTextField resignFirstResponder]; // when do I use . and when do I use []
+    /*
+    
+    // calculating alcohol in the beers
+    int numberOfBeers = self.beerCountSlider.value;
+    int ouncesInOnBeerGlass = 12;
+    
+    float alcoholPercentageOfBeer = [self.beerPercentTextField.text floatValue] / 100 ;
+    float ouncesOfAlcoholPerBeer = ouncesInOnBeerGlass * alcoholPercentageOfBeer;
+    float ouncesOfAlcoholTotal = ouncesOfAlcoholPerBeer * numberOfBeers;
+    
+    
+    // calculating the equivalent amount of wine
+    float ouncesInOneWineGlass = 5;
+    float alcoholPercentageOfWine = 0.13;
+    
+    float ouncesOfAlcoholPerWineGlass = ouncesInOneWineGlass * alcoholPercentageOfWine;
+    float numberOfWineGlassesForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerWineGlass;
+    
+    // use Singular or Plural
+    NSString *beerText;
+    
+    if (numberOfBeers == 1) {
+        beerText = NSLocalizedString(@"beer", @"singular beer");
+    } else {
+        beerText = NSLocalizedString(@"beers", @"plural of beer");
+    }
+    
+    
+    NSString *wineText;
+    
+    if (numberOfWineGlassesForEquivalentAlcoholAmount == 1) {
+        wineText = NSLocalizedString(@"glass", @"single glass");
+    } else {
+        wineText = NSLocalizedString(@"glasses", @"plural of glass");
+    }
+    
+    
+    // generate the text and display it on the label
+    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    self.resultLabel.text = resultText;
+    
+    // generate text & display number of beers
+    NSString *beerCountText = [NSString stringWithFormat:NSLocalizedString(@"%d %@", nil), numberOfBeers, beerText];
+    self.beerCountLabel.text = beerCountText;
+     
+     
+     */
 }
 
 
