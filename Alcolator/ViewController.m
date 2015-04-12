@@ -89,6 +89,15 @@
     
     // Gets rid of the maximum number of lines on the label
     self.resultLabel.numberOfLines = 0;
+    
+    // Set the primary color of our input field to white
+    self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
+    
+    // open on the beerPercentTextField & set a numerical keyboard
+    [self.beerPercentTextField becomeFirstResponder];
+    self.beerPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
+
+    
 }
 
 
@@ -123,6 +132,13 @@
     
     CGFloat bottomOfLabel = CGRectGetMaxY(self.resultLabel.frame);
     self.calculateButton.frame = CGRectMake(padding, bottomOfLabel + padding, itemWidth, itemHeight);
+    
+    
+    
+    // Set the font size
+    self.calculateButton.titleLabel.font = [UIFont systemFontOfSize:30];
+    
+    
 }
 
 
