@@ -90,9 +90,6 @@
     // Gets rid of the maximum number of lines on the label
     self.resultLabel.numberOfLines = 0;
     
-    // Set the primary color of our input field to white
-    self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
-    
     // open on the beerPercentTextField & set a numerical keyboard
     [self.beerPercentTextField becomeFirstResponder];
     self.beerPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
@@ -109,7 +106,7 @@
     // figuring out the size of the screen
     CGRect screenRect = [[UIScreen mainScreen] bounds];
     CGFloat screenWidth = screenRect.size.width;
-    CGFloat screenHeight = screenRect.size.height;
+//    CGFloat screenHeight = screenRect.size.height;
 //    NSLog(@"the width is %f", screenWidth);
 //    NSLog(@"the height is %f", screenHeight);
     
@@ -268,9 +265,23 @@
 
 - (void)tapGestureDidFire:(UITapGestureRecognizer *)sender {
     [self.beerPercentTextField resignFirstResponder];
+    
+    
+    
 }
 
 
+
+-(void)textFieldDidBeginEditing:(UITextField *)beerPercentTextField{
+    // Set the primary color of our input field to white
+    self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
+}
+
+
+-(void)textFieldDidEndEditing:(UITextField *)beerPercentTextField{
+    // change the color of the beerPercentTextField and take the emphasis away from this input field
+    self.beerPercentTextField.backgroundColor = self.view.backgroundColor;
+}
 
 
 
