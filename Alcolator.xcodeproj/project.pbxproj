@@ -10,7 +10,6 @@
 		01E12B4D1ADA1F8B005D9F1E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E12B4C1ADA1F8B005D9F1E /* main.m */; };
 		01E12B501ADA1F8B005D9F1E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E12B4F1ADA1F8B005D9F1E /* AppDelegate.m */; };
 		01E12B531ADA1F8B005D9F1E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E12B521ADA1F8B005D9F1E /* ViewController.m */; };
-		01E12B561ADA1F8B005D9F1E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01E12B541ADA1F8B005D9F1E /* Main.storyboard */; };
 		01E12B581ADA1F8B005D9F1E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01E12B571ADA1F8B005D9F1E /* Images.xcassets */; };
 		01E12B5B1ADA1F8B005D9F1E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01E12B591ADA1F8B005D9F1E /* LaunchScreen.xib */; };
 		01E12B671ADA1F8B005D9F1E /* AlcolatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 01E12B661ADA1F8B005D9F1E /* AlcolatorTests.m */; };
@@ -34,7 +33,6 @@
 		01E12B4F1ADA1F8B005D9F1E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		01E12B511ADA1F8B005D9F1E /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		01E12B521ADA1F8B005D9F1E /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		01E12B551ADA1F8B005D9F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01E12B571ADA1F8B005D9F1E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		01E12B5A1ADA1F8B005D9F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		01E12B601ADA1F8B005D9F1E /* AlcolatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AlcolatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +83,6 @@
 				01E12B4F1ADA1F8B005D9F1E /* AppDelegate.m */,
 				01E12B511ADA1F8B005D9F1E /* ViewController.h */,
 				01E12B521ADA1F8B005D9F1E /* ViewController.m */,
-				01E12B541ADA1F8B005D9F1E /* Main.storyboard */,
 				01E12B571ADA1F8B005D9F1E /* Images.xcassets */,
 				01E12B591ADA1F8B005D9F1E /* LaunchScreen.xib */,
 				01E12B4A1ADA1F8B005D9F1E /* Supporting Files */,
@@ -199,7 +196,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01E12B561ADA1F8B005D9F1E /* Main.storyboard in Resources */,
 				01E12B5B1ADA1F8B005D9F1E /* LaunchScreen.xib in Resources */,
 				01E12B581ADA1F8B005D9F1E /* Images.xcassets in Resources */,
 			);
@@ -244,14 +240,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		01E12B541ADA1F8B005D9F1E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				01E12B551ADA1F8B005D9F1E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		01E12B591ADA1F8B005D9F1E /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -346,6 +334,7 @@
 				INFOPLIST_FILE = Alcolator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -356,6 +345,7 @@
 				INFOPLIST_FILE = Alcolator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
