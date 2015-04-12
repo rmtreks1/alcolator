@@ -110,6 +110,8 @@
     self.beerCountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
     self.resultLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f];
     self.resultLabel.textAlignment = NSTextAlignmentCenter;
+    self.calculateButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f];
+
     
     // hide the calculate button & the label by default
     self.calculateButton.hidden = true;
@@ -140,7 +142,10 @@
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(padding, padding, 160, itemHeight);
+    
+    CGFloat rightOfbeerPercentTextField = CGRectGetMaxX(self.beerPercentTextField.frame);
+    self.calculateButton.frame = CGRectMake(rightOfbeerPercentTextField + padding, padding, 100, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.staticBeerPercentageLabel.frame = CGRectMake(padding, bottomOfTextField, itemWidth, itemHeight/2);
@@ -156,16 +161,6 @@
     CGFloat bottomOfBeerCountLabel = CGRectGetMaxY(self.beerCountLabel.frame);
     self.resultLabel.frame = CGRectMake(padding, bottomOfBeerCountLabel + padding, itemWidth, itemHeight * 2);
     
-    CGFloat bottomOfLabel = CGRectGetMaxY(self.resultLabel.frame);
-    self.calculateButton.frame = CGRectMake(padding, bottomOfLabel + padding, itemWidth, itemHeight);
-    
-    
- 
-    // Set the font size
-    self.calculateButton.titleLabel.font = [UIFont systemFontOfSize:30];
-    [[self.calculateButton layer] setBorderWidth:1.0f];
-    [[self.calculateButton layer] setBorderColor:[UIColor whiteColor].CGColor];
-
 
 }
 
@@ -300,9 +295,6 @@
 
 - (void)tapGestureDidFire:(UITapGestureRecognizer *)sender {
     [self.beerPercentTextField resignFirstResponder];
-    
-    
-    
 }
 
 
@@ -324,9 +316,11 @@
     if (self.beerPercentTextField.text.length != 0) {
         self.calculateButton.hidden = false; // hide the calculate button during edit
         self.staticBeerPercentageLabel.hidden = false;
+        self.resultLabel.hidden=false;
     } else {
         self.calculateButton.hidden = true;
         self.staticBeerPercentageLabel.hidden = true;
+        self.resultLabel.hidden=true;
     }
     
 }
