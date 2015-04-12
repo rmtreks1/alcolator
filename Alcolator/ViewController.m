@@ -106,10 +106,13 @@
     
     // setting default font
     self.staticBeerPercentageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
-    self.beerPercentTextField.font = [UIFont fontWithName:@"HelveticaNeue-UltraThin" size:16.0f];
+    self.beerPercentTextField.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16.0f];
     self.beerCountLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14.0f];
-    self.resultLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0f];
+    self.resultLabel.font = [UIFont fontWithName:@"HelveticaNeue-Thin" size:20.0f];
     self.resultLabel.textAlignment = NSTextAlignmentCenter;
+    
+    // hide the calculate button by default
+     self.calculateButton.hidden = true;
 
     
 }
@@ -139,7 +142,7 @@
     self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
-    self.staticBeerPercentageLabel.frame = CGRectMake(padding, bottomOfTextField, itemWidth, itemHeight);
+    self.staticBeerPercentageLabel.frame = CGRectMake(padding, bottomOfTextField, itemWidth, itemHeight/2);
     
     CGFloat bottomOfBeerPercentageLabel = CGRectGetMaxY(self.staticBeerPercentageLabel.frame);
     self.beerCountSlider.frame = CGRectMake(padding, bottomOfBeerPercentageLabel + padding, itemWidth, itemHeight);
@@ -156,12 +159,12 @@
     self.calculateButton.frame = CGRectMake(padding, bottomOfLabel + padding, itemWidth, itemHeight);
     
     
-    
+ 
     // Set the font size
     self.calculateButton.titleLabel.font = [UIFont systemFontOfSize:30];
     [[self.calculateButton layer] setBorderWidth:1.0f];
     [[self.calculateButton layer] setBorderColor:[UIColor whiteColor].CGColor];
-   
+
 
 }
 
@@ -181,6 +184,10 @@
     
     if (enteredNumber == 0) {
         sender.text = nil;
+        self.calculateButton.hidden = TRUE;
+
+    } else {
+        self.calculateButton.hidden = false;
     }
 }
 
@@ -304,6 +311,7 @@
     self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
     self.beerPercentTextField.textColor = [UIColor blueColor];
     self.beerPercentTextField.keyboardAppearance = UIKeyboardAppearanceDark;
+   // self.calculateButton.hidden = true; // hide the calculate button during edit
 }
 
 
@@ -311,6 +319,13 @@
     // change the color of the beerPercentTextField back to black to take emphasis away
     self.beerPercentTextField.backgroundColor = self.view.backgroundColor;
     self.beerPercentTextField.textColor = [UIColor blackColor];
+    NSLog(@"%lu",(unsigned long)self.beerPercentTextField.text.length); // error!!! beerPercentTextField is storing text not float
+    if (self.beerPercentTextField.text.length != 0) {
+       self.calculateButton.hidden = false; // hide the calculate button during edit
+    } else {
+        self.calculateButton.hidden = true;
+    }
+    
 }
 
 
