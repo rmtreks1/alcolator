@@ -13,7 +13,8 @@
 @property (weak, nonatomic) UITextField *beerPercentTextField;
 @property (weak, nonatomic) UISlider *beerCountSlider;
 @property (weak, nonatomic) UILabel *resultLabel;
-@property (weak, nonatomic) UILabel *beerCountLabel; // this isn't added to the view
+@property (weak, nonatomic) UILabel *beerCountLabel;
+@property (weak, nonatomic) UILabel *staticBeerPercentageLabel;
 
 - (void)buttonPressed:(UIButton *)sender;
 

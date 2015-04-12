@@ -36,9 +36,10 @@
     UITextField *textField = [[UITextField alloc] init];
     UISlider *slider = [[UISlider alloc] init];
     UILabel *label = [[UILabel alloc] init];
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeSystem];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] init];
     UILabel *beerCountLabel = [[UILabel alloc] init];
+    UILabel *staticBeerPercentageLabel = [[UILabel alloc] init];
     
     // Add each view and the gesture recognizer as the view's subviews
     [self.view addSubview:textField];
@@ -47,6 +48,7 @@
     [self.view addSubview:button];
     [self.view addGestureRecognizer:tap];
     [self.view addSubview:beerCountLabel];
+    [self.view addSubview:staticBeerPercentageLabel];
     
     // Assign the views and gesture recognizer to our properties
     self.beerPercentTextField = textField;
@@ -55,6 +57,7 @@
     self.calculateButton = button;
     self.hideKeyboardTapGestureRecognizer = tap;
     self.beerCountLabel = beerCountLabel;
+    self.staticBeerPercentageLabel = staticBeerPercentageLabel;
 }
 
 
@@ -65,7 +68,8 @@
     [super viewDidLoad];
     
     // Set our primary view's background color to lightGrayColor
-    self.view.backgroundColor = [UIColor lightGrayColor];
+    self.view.backgroundColor = [UIColor whiteColor];
+
     
     // Tells the text field that `self`, this instance of `ViewController` should be treated as the text field's delegate
     self.beerPercentTextField.delegate = self;
@@ -96,6 +100,9 @@
     // open on the beerPercentTextField & set a numerical keyboard
     [self.beerPercentTextField becomeFirstResponder];
     self.beerPercentTextField.keyboardType = UIKeyboardTypeDecimalPad;
+    
+    // set the text for Beer Percentage Label
+    self.staticBeerPercentageLabel.text = @"alcohol percentage per beer";
 
     
 }
@@ -125,7 +132,10 @@
     self.beerPercentTextField.frame = CGRectMake(padding, padding, itemWidth, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
-    self.beerCountSlider.frame = CGRectMake(padding, bottomOfTextField + padding, itemWidth, itemHeight);
+    self.staticBeerPercentageLabel.frame = CGRectMake(padding, bottomOfTextField, itemWidth, itemHeight);
+    
+    CGFloat bottomOfBeerPercentageLabel = CGRectGetMaxY(self.staticBeerPercentageLabel.frame);
+    self.beerCountSlider.frame = CGRectMake(padding, bottomOfBeerPercentageLabel + padding, itemWidth, itemHeight);
    
     CGFloat bottomOfSlider = CGRectGetMaxY(self.beerCountSlider.frame);
     // making the beer count label appear on the right of the slider just underneath
@@ -142,8 +152,10 @@
     
     // Set the font size
     self.calculateButton.titleLabel.font = [UIFont systemFontOfSize:30];
-    
-    
+    [[self.calculateButton layer] setBorderWidth:1.0f];
+    [[self.calculateButton layer] setBorderColor:[UIColor whiteColor].CGColor];
+   
+
 }
 
 
@@ -283,12 +295,14 @@
 -(void)textFieldDidBeginEditing:(UITextField *)beerPercentTextField{
     // Set the primary color of our input field to white
     self.beerPercentTextField.backgroundColor = [UIColor whiteColor];
+    self.beerPercentTextField.textColor = [UIColor blueColor];
 }
 
 
 -(void)textFieldDidEndEditing:(UITextField *)beerPercentTextField{
     // change the color of the beerPercentTextField and take the emphasis away from this input field
     self.beerPercentTextField.backgroundColor = self.view.backgroundColor;
+    self.beerPercentTextField.textColor = [UIColor blackColor];
 }
 
 
