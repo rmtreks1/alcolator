@@ -97,7 +97,18 @@
 - (void) viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     
-    CGFloat viewWidth = 320;
+    // figuring out the size of the screen
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    CGFloat screenWidth = screenRect.size.width;
+    CGFloat screenHeight = screenRect.size.height;
+//    NSLog(@"the width is %f", screenWidth);
+//    NSLog(@"the height is %f", screenHeight);
+    
+    
+    
+//    CGFloat viewWidth = 320;
+    CGFloat viewWidth = screenWidth;
+
     CGFloat padding = 20;
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
@@ -108,7 +119,7 @@
     self.beerCountSlider.frame = CGRectMake(padding, bottomOfTextField + padding, itemWidth, itemHeight);
     
     CGFloat bottomOfSlider = CGRectGetMaxY(self.beerCountSlider.frame);
-    self.resultLabel.frame = CGRectMake(padding, bottomOfSlider + padding, itemWidth, itemHeight * 4);
+    self.resultLabel.frame = CGRectMake(padding, bottomOfSlider + padding, itemWidth, itemHeight * 2);
     
     CGFloat bottomOfLabel = CGRectGetMaxY(self.resultLabel.frame);
     self.calculateButton.frame = CGRectMake(padding, bottomOfLabel + padding, itemWidth, itemHeight);
