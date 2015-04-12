@@ -186,9 +186,10 @@
 }
 
 
-- (void)buttonPressed:(UIButton *)sender {
-    [self.beerPercentTextField resignFirstResponder]; // when do I use . and when do I use []
-    /*
+ - (void)buttonPressed:(UIButton *)sender {
+
+     [self.beerPercentTextField resignFirstResponder]; // when do I use . and when do I use []
+
     
     // calculating alcohol in the beers
     int numberOfBeers = self.beerCountSlider.value;
@@ -234,7 +235,7 @@
     self.beerCountLabel.text = beerCountText;
      
      
-     */
+
 }
 
 
