@@ -64,6 +64,11 @@
 
 - (void)viewDidLoad
 {
+    // setting title for the view
+    self.title = NSLocalizedString(@"Wine", @"wine");
+    
+    
+    
     // Calls the superclass's implementation
     [super viewDidLoad];
     
