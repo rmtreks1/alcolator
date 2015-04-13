@@ -265,6 +265,11 @@
     self.beerCountLabel.text = beerCountText;
 
     
+    // set the title label
+    NSString *titleWithCount = [NSString stringWithFormat:NSLocalizedString(@"Wine (%.1f %@)", nil), numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    self.title = titleWithCount;
+
+    
 }
 
 
@@ -317,6 +322,8 @@
     self.beerCountLabel.text = beerCountText;
      
      
+     
+
 
 }
 
