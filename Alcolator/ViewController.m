@@ -121,6 +121,12 @@
     // hide the calculate button & the label by default
     self.calculateButton.hidden = true;
     self.staticBeerPercentageLabel.hidden = true;
+    
+    
+    // disabling the swipe left for previous screen as was intefering with the slider
+    if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+    }
 
     
 }
