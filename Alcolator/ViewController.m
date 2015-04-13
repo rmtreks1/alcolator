@@ -26,7 +26,25 @@
  
 @end
 
+
 @implementation ViewController
+
+- (instancetype) init {
+    self = [super init];
+    
+    if (self) {
+        self.title = NSLocalizedString(@"Wine", @"wine");
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake(0, -18)];
+    }
+    
+    return self;
+}
+
+
+
+
+
+
 
 - (void)loadView {
     // Allocate and initialize the all-encompassing view
@@ -64,8 +82,9 @@
 
 - (void)viewDidLoad
 {
-    // setting title for the view
-    self.title = NSLocalizedString(@"Wine", @"wine");
+    self.view.backgroundColor = [UIColor colorWithRed:0.741 green:0.925 blue:0.714 alpha:1]; /*#bdecb6*/
+    
+
     
     
     
@@ -73,7 +92,7 @@
     [super viewDidLoad];
     
     // Set our primary view's background color to lightGrayColor
-    self.view.backgroundColor = [UIColor whiteColor];
+  //  self.view.backgroundColor = [UIColor whiteColor];
 
     
     // Tells the text field that `self`, this instance of `ViewController` should be treated as the text field's delegate
@@ -128,14 +147,9 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
         
         
-    // set the initial values for some lavels
-    self.alternateAlcohol = NSLocalizedString(@"Wine", "wine");
-    self.alternateAlcoholTextSingular = NSLocalizedString(@"glass", "single of glass");
-    self.alternateAlcoholTextPlural = NSLocalizedString(@"glasses", "plural of glass");
+    
         
-    // set up the initial values for some variables
-    self.ouncesInOneStandard = 5;
-    self.alcoholPercentageOfOneStandard = 0.13;
+  
         
         
     }
@@ -148,6 +162,18 @@
 
 - (void) viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
+   
+    
+    // set up the initial values for some variables
+    self.ouncesInOneStandard = 5;
+    self.alcoholPercentageOfOneStandard = 0.13;
+    
+    // set the initial values for some lavels
+    self.alternateAlcohol = NSLocalizedString(@"Wine", "wine");
+    self.alternateAlcoholTextSingular = NSLocalizedString(@"glass", "single of glass");
+    self.alternateAlcoholTextPlural = NSLocalizedString(@"glasses", "plural of glass");
+    
+    
     
     // figuring out the size of the screen
     CGRect screenRect = [[UIScreen mainScreen] bounds];
@@ -278,6 +304,9 @@
     // set the title label
     NSString *titleWithCount = [NSString stringWithFormat:NSLocalizedString(@"%@ (%.1f %@)", nil), self.alternateAlcohol,numberOfStandardsForEquivalentAlcoholAmount, alternateText];
     self.title = titleWithCount;
+    
+    // change the notification icon value on the tab
+    [self.tabBarItem setBadgeValue:[NSString stringWithFormat:@"%d", (int) sender.value]];
 
     
 }
