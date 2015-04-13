@@ -139,6 +139,9 @@
 //    NSLog(@"the height is %f", screenHeight);
     
     
+    // detecting the navbar height
+    CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    
     
 //    CGFloat viewWidth = 320;
     CGFloat viewWidth = screenWidth;
@@ -147,10 +150,10 @@
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding, 160, itemHeight);
+    self.beerPercentTextField.frame = CGRectMake(padding, padding + navBarHeight, 160, itemHeight);
     
     CGFloat rightOfbeerPercentTextField = CGRectGetMaxX(self.beerPercentTextField.frame);
-    self.calculateButton.frame = CGRectMake(rightOfbeerPercentTextField + padding, padding, 100, itemHeight);
+    self.calculateButton.frame = CGRectMake(rightOfbeerPercentTextField + padding, padding + navBarHeight, 100, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.staticBeerPercentageLabel.frame = CGRectMake(padding, bottomOfTextField, itemWidth, itemHeight/2);
@@ -165,6 +168,8 @@
     
     CGFloat bottomOfBeerCountLabel = CGRectGetMaxY(self.beerCountLabel.frame);
     self.resultLabel.frame = CGRectMake(padding, bottomOfBeerCountLabel + padding, itemWidth, itemHeight * 2);
+    
+    
     
 
 }
