@@ -18,6 +18,16 @@
 
 // defining some labels
 @property (strong, nonatomic) NSString *alternateAlcohol;
+@property (strong, nonatomic) NSString *alternateAlcoholTextSingular;
+@property (strong, nonatomic) NSString *alternateAlcoholTextPlural;
+
+
+// opening up some more variables
+@property (assign) CGFloat ouncesInOneStandard;
+@property (assign) CGFloat alcoholPercentageOfOneStandard;
+
+
+
 
 - (void)buttonPressed:(UIButton *)sender;
 

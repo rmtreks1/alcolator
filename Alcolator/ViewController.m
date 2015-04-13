@@ -130,7 +130,12 @@
         
     // set the initial values for some lavels
     self.alternateAlcohol = NSLocalizedString(@"Wine", "wine");
+    self.alternateAlcoholTextSingular = NSLocalizedString(@"glass", "single of glass");
+    self.alternateAlcoholTextPlural = NSLocalizedString(@"glasses", "plural of glass");
         
+    // set up the initial values for some variables
+    self.ouncesInOneStandard = 5;
+    self.alcoholPercentageOfOneStandard = 0.13;
         
         
     }
@@ -237,11 +242,9 @@
     float ouncesOfAlcoholTotal = ouncesOfAlcoholPerBeer * numberOfBeers;
     
     
-    // calculating the equivalent amount of wine
-    float ouncesInOneStandard = 5;
-    float alcoholPercentageOfOneStandard = 0.13;
+   
     
-    float ouncesOfAlcoholPerOneStandard = ouncesInOneStandard * alcoholPercentageOfOneStandard;
+    float ouncesOfAlcoholPerOneStandard = self.ouncesInOneStandard * self.alcoholPercentageOfOneStandard;
     float numberOfStandardsForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerOneStandard;
     
     // use Singular or Plural
@@ -254,17 +257,17 @@
     }
     
     
-    NSString *wineText;
+    NSString *alternateText;
     
     if (numberOfStandardsForEquivalentAlcoholAmount == 1) {
-        wineText = NSLocalizedString(@"glass", @"single glass");
+        alternateText = self.alternateAlcoholTextSingular;
     } else {
-        wineText = NSLocalizedString(@"glasses", @"plural of glass");
+        alternateText = self.alternateAlcoholTextPlural;
     }
     
     
     // generate the text and display it on the label
-    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of %@.", nil), numberOfBeers, beerText, numberOfStandardsForEquivalentAlcoholAmount, wineText, self.alternateAlcohol];
+    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of %@.", nil), numberOfBeers, beerText, numberOfStandardsForEquivalentAlcoholAmount, alternateText, [self.alternateAlcohol lowercaseString]];
     self.resultLabel.text = resultText;
     
     // generate text & display number of beers
@@ -273,7 +276,7 @@
 
     
     // set the title label
-    NSString *titleWithCount = [NSString stringWithFormat:NSLocalizedString(@"%@ (%.1f %@)", nil), self.alternateAlcohol,numberOfStandardsForEquivalentAlcoholAmount, wineText];
+    NSString *titleWithCount = [NSString stringWithFormat:NSLocalizedString(@"%@ (%.1f %@)", nil), self.alternateAlcohol,numberOfStandardsForEquivalentAlcoholAmount, alternateText];
     self.title = titleWithCount;
 
     
