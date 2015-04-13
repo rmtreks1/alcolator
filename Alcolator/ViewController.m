@@ -139,21 +139,33 @@
 //    NSLog(@"the height is %f", screenHeight);
     
     
-    // detecting the navbar height
+    // detecting the device orientation and then setting the navbar height
+    // this is to compensate for the issue where the views are sometimes not appearing because the screen size is not accounted for
     CGFloat navBarHeight = self.navigationController.navigationBar.frame.size.height;
+    CGFloat statusBarHeight;
+    
+    if (UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
+        statusBarHeight = 0.0f;
+    } else if (UIDeviceOrientationIsPortrait([UIDevice currentDevice].orientation)){
+        statusBarHeight = 20.0f;
+    }
     
     
-//    CGFloat viewWidth = 320;
+    NSLog(@"nav bar height is %f", navBarHeight);
+    
+    // setting up more fixed variables
     CGFloat viewWidth = screenWidth;
 
     CGFloat padding = 20;
     CGFloat itemWidth = viewWidth - padding - padding;
     CGFloat itemHeight = 44;
     
-    self.beerPercentTextField.frame = CGRectMake(padding, padding + navBarHeight, 160, itemHeight);
+    
+    // laying out the views
+    self.beerPercentTextField.frame = CGRectMake(padding, statusBarHeight + navBarHeight, 160, itemHeight);
     
     CGFloat rightOfbeerPercentTextField = CGRectGetMaxX(self.beerPercentTextField.frame);
-    self.calculateButton.frame = CGRectMake(rightOfbeerPercentTextField + padding, padding + navBarHeight, 100, itemHeight);
+    self.calculateButton.frame = CGRectMake(rightOfbeerPercentTextField + padding, statusBarHeight + navBarHeight, 100, itemHeight);
     
     CGFloat bottomOfTextField = CGRectGetMaxY(self.beerPercentTextField.frame);
     self.staticBeerPercentageLabel.frame = CGRectMake(padding, bottomOfTextField, itemWidth, itemHeight/2);
