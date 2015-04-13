@@ -33,6 +33,25 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.992 green:0.992 blue:0.588 alpha:1]; /*#fdfd96*/
     
+//    // set the initial values for some lavels
+//    self.alternateAlcohol = NSLocalizedString(@"Whiskey", "whiskey");
+//    self.alternateAlcoholTextSingular = NSLocalizedString(@"shot", "single of shot");
+//    self.alternateAlcoholTextPlural = NSLocalizedString(@"shots", "plural of shot");
+//    
+//    
+//    // set up the values for some variables
+//    self.ouncesInOneStandard = 1;
+//    self.alcoholPercentageOfOneStandard = 0.4;
+
+
+    
+}
+
+
+- (void) viewWillLayoutSubviews {
+    [super viewWillLayoutSubviews];
+    
+    
     // set the initial values for some lavels
     self.alternateAlcohol = NSLocalizedString(@"Whiskey", "whiskey");
     self.alternateAlcoholTextSingular = NSLocalizedString(@"shot", "single of shot");
@@ -42,10 +61,9 @@
     // set up the values for some variables
     self.ouncesInOneStandard = 1;
     self.alcoholPercentageOfOneStandard = 0.4;
-
-
     
 }
+
 
 
 
