@@ -16,6 +16,9 @@
 @property (weak, nonatomic) UILabel *beerCountLabel;
 @property (weak, nonatomic) UILabel *staticBeerPercentageLabel;
 
+// defining some labels
+@property (strong, nonatomic) NSString *alternateAlcohol;
+
 - (void)buttonPressed:(UIButton *)sender;
 
 - (void)sliderValueDidChange:(UISlider *)sender;

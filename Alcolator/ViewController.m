@@ -126,6 +126,13 @@
     // disabling the swipe left for previous screen as was intefering with the slider
     if ([self.navigationController respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+        
+        
+    // set the initial values for some lavels
+    self.alternateAlcohol = NSLocalizedString(@"Wine", "wine");
+        
+        
+        
     }
 
     
@@ -231,11 +238,11 @@
     
     
     // calculating the equivalent amount of wine
-    float ouncesInOneWineGlass = 5;
-    float alcoholPercentageOfWine = 0.13;
+    float ouncesInOneStandard = 5;
+    float alcoholPercentageOfOneStandard = 0.13;
     
-    float ouncesOfAlcoholPerWineGlass = ouncesInOneWineGlass * alcoholPercentageOfWine;
-    float numberOfWineGlassesForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerWineGlass;
+    float ouncesOfAlcoholPerOneStandard = ouncesInOneStandard * alcoholPercentageOfOneStandard;
+    float numberOfStandardsForEquivalentAlcoholAmount = ouncesOfAlcoholTotal / ouncesOfAlcoholPerOneStandard;
     
     // use Singular or Plural
     NSString *beerText;
@@ -249,7 +256,7 @@
     
     NSString *wineText;
     
-    if (numberOfWineGlassesForEquivalentAlcoholAmount == 1) {
+    if (numberOfStandardsForEquivalentAlcoholAmount == 1) {
         wineText = NSLocalizedString(@"glass", @"single glass");
     } else {
         wineText = NSLocalizedString(@"glasses", @"plural of glass");
@@ -257,7 +264,7 @@
     
     
     // generate the text and display it on the label
-    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of wine.", nil), numberOfBeers, beerText, numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    NSString *resultText = [NSString stringWithFormat:NSLocalizedString(@"%d %@ contains as much alcohol as %.1f %@ of %@.", nil), numberOfBeers, beerText, numberOfStandardsForEquivalentAlcoholAmount, wineText, self.alternateAlcohol];
     self.resultLabel.text = resultText;
     
     // generate text & display number of beers
@@ -266,7 +273,7 @@
 
     
     // set the title label
-    NSString *titleWithCount = [NSString stringWithFormat:NSLocalizedString(@"Wine (%.1f %@)", nil), numberOfWineGlassesForEquivalentAlcoholAmount, wineText];
+    NSString *titleWithCount = [NSString stringWithFormat:NSLocalizedString(@"%@ (%.1f %@)", nil), self.alternateAlcohol,numberOfStandardsForEquivalentAlcoholAmount, wineText];
     self.title = titleWithCount;
 
     
