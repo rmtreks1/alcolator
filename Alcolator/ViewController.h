@@ -18,6 +18,8 @@
 
 - (void)buttonPressed:(UIButton *)sender;
 
+- (void)sliderValueDidChange:(UISlider *)sender;
+
 
 @end
 
